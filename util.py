@@ -127,6 +127,12 @@ def plot_1D(data, axes):
         pass
     
     try:
+        for line, color in zip(lines, data['color']):
+            line.set_color(color)
+    except KeyError:
+        pass
+    
+    try:
         # Set the label for each line so that they can
         # be returned by Legend.get_legend_handles_labels()
         for line, label in zip(lines, data[data['LABL_PTR_1']]['data']):
@@ -197,7 +203,9 @@ def plot_burst_selections(sc, start_date, end_date,
 
     fgm_data = from_cdflib(files, b_vname,
                            start_date, end_date)
-    fgm_data[fgm_data['LABL_PTR_1']]['data'] = ['Bx', 'By', 'Bz', '|B|']
+    fgm_data['data'] = fgm_data['data'][:,[3,0,1,2]]
+    fgm_data['color'] = ['Black', 'Blue', 'Green', 'Red']
+    fgm_data[fgm_data['LABL_PTR_1']]['data'] = ['|B|', 'Bx', 'By', 'Bz']
     
     # FPI DIS
     fpi_mode = 'fast'
