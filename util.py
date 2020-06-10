@@ -237,9 +237,12 @@ def plot_burst_selections(sc, start_date, end_date,
 
 
     # Grab selections
-    abs_data = sel.selections('abs', start_date, end_date)
-    sitl_data = sel.selections('sitl+back', start_date, end_date)
-    gls_data = sel.selections('mp-dl-unh', start_date, end_date)
+    abs_data = sel.selections('abs', start_date, end_date,
+                              combine=True, sort=True)
+    sitl_data = sel.selections('sitl+back', start_date, end_date,
+                               combine=True, sort=True)
+    gls_data = sel.selections('mp-dl-unh', start_date, end_date,
+                              combine=True, sort=True)
 
     # SITL data time series
     t_abs = []
