@@ -342,5 +342,5 @@ def plot_burst_selections(sc, start_date, end_date,
     
     # Set a common time range
     plt.setp(axes, xlim=mdates.date2num([start_date, end_date]))
-    plt.subplots_adjust(left=0.15, right=0.85, top=0.93)
+    plt.subplots_adjust(left=0.27, right=0.85, top=0.93)
     return fig, axes
